@@ -1,26 +1,25 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import renderer from 'react-test-renderer';
-// import configureStore from 'redux-mock-store';
-// import {Provider} from 'react-redux';
+// import { saveData, resetValidationMessage } from '../actions';
+// import { validate } from '../utils/api';
 
-// import {createStore} from 'redux';
+import { CodeChallenge } from '../../src/app/containers/code-challenge';
 
-import {codeChallenge} from '../../src/app/containers/code-challenge';
-
-describe('Code challenge snapshot', () => {
-    it('+++capturing Snapshot of code challenge ', () => {
-        const renderedValue =  renderer.create(<codeChallenge />).toJSON();
+describe('Code challenge snapshot ', () => {
+    it('capturing Snapshot of code challenge ', () => {
+        const renderedValue =  renderer.create(<CodeChallenge />).toJSON();
         expect(renderedValue).toMatchSnapshot();
     });
 });
 
-describe('Code challenge shallow Render REACT COMPONENTS', () => {
-    let wrapper;
+describe('Code challenge shallow Render REACT COMPONENTS ', () => {
+    let component;
+    beforeEach(()=>{
+        component = shallow(<CodeChallenge /> );
+    });
 
-    fit('+++ render the DUMB component', () => {
-        wrapper = shallow(<codeChallenge />);
-        console.log('------------------', wrapper);
-        expect(wrapper).toBeDefined();
+    it('+++ render the DUMB component', () => {
+        expect(component.length).toEqual(1);
     });
 });
